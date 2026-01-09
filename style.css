@@ -1,0 +1,316 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    /* Identidad de Marca Ninblu */
+    --bg-void: #05020a;
+    --ninblu-purple: #752c86;
+    --ninblu-pink: #f4676f;
+    --ninblu-yellow: #feee8c;
+    --text-white: #ffffff;
+    --text-muted: #a0a0a0;
+
+    /* Sistema Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 20px;
+    
+    /* Dimensiones Seguras (Móvil) */
+    --header-height: 70px;
+    --nav-height: 70px;
+    --safe-top: env(safe-area-inset-top, 20px);
+    --safe-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-void);
+    color: var(--text-white);
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Inder', sans-serif;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Fondo Ambiental */
+.app-background {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(117, 44, 134, 0.2), transparent 70%);
+    z-index: -1; pointer-events: none;
+}
+
+/* =========================================
+   2. SISTEMA DE NAVEGACIÓN SPA
+   ========================================= */
+.hidden-section { display: none !important; }
+
+.active-section {
+    display: block !important;
+    animation: fadeInSection 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================
+   3. LAYOUT & HEADER
+   ========================================= */
+#main-container {
+    height: 100vh;
+    overflow-y: auto;
+    padding: calc(var(--header-height) + var(--safe-top) + 20px) 20px calc(var(--nav-height) + var(--safe-bottom) + 20px);
+    scroll-behavior: smooth;
+}
+
+.top-bar {
+    position: fixed; top: 0; left: 0; width: 100%;
+    height: calc(var(--header-height) + var(--safe-top));
+    padding: var(--safe-top) 20px 0;
+    background: rgba(5, 2, 10, 0.85);
+    backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+}
+
+.brand-container { display: flex; align-items: center; gap: 12px; }
+.brand-icon {
+    width: 32px; height: 32px;
+    color: var(--ninblu-purple);
+    filter: drop-shadow(0 0 8px rgba(117, 44, 134, 0.6));
+}
+.brand-text-img { height: 24px; width: auto; object-fit: contain; opacity: 0.9; }
+
+/* Avatar Header con Indicador */
+.user-profile-trigger { position: relative; cursor: pointer; }
+.avatar-small {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: white;
+}
+.status-indicator {
+    position: absolute; bottom: 0; right: 0;
+    width: 10px; height: 10px;
+    background: #555; border-radius: 50%;
+    border: 2px solid var(--bg-void);
+}
+
+/* =========================================
+   4. COMPONENTES UI
+   ========================================= */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.glass-input-container { margin-bottom: 10px; }
+.glass-input {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--glass-border);
+    padding: 14px;
+    border-radius: 10px;
+    color: white;
+    font-family: inherit;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+.glass-input:focus { border-color: var(--ninblu-pink); }
+textarea.glass-input { resize: none; font-family: 'Montserrat', sans-serif; }
+
+/* Botones */
+.btn-primary {
+    background: linear-gradient(135deg, var(--ninblu-purple) 0%, var(--ninblu-pink) 100%);
+    border: none; color: white; padding: 14px 20px;
+    border-radius: 12px; font-weight: 700; text-transform: uppercase;
+    font-size: 0.85rem; letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(117, 44, 134, 0.4);
+    width: 100%; cursor: pointer; transition: transform 0.2s;
+}
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-icon-primary {
+    width: 45px; height: 45px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--ninblu-pink);
+    color: var(--ninblu-pink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; cursor: pointer;
+    box-shadow: 0 0 10px rgba(244, 103, 111, 0.2);
+}
+
+.btn-danger-outline {
+    width: 100%; padding: 12px; background: transparent;
+    border: 1px solid #ff4444; color: #ff4444;
+    border-radius: 10px; font-weight: 600; cursor: pointer; margin-top: 20px;
+}
+
+/* Nuevo Botón Link (Zoom/Meet) */
+.btn-link-proj {
+    transition: background 0.3s;
+}
+.btn-link-proj:hover {
+    background: rgba(117, 44, 134, 0.6) !important;
+}
+
+.section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin: 25px 0 15px 0;
+}
+.section-header h2, .section-header h3 { font-size: 1.2rem; color: var(--text-white); }
+
+/* =========================================
+   5. SECCIONES ESPECÍFICAS
+   ========================================= */
+
+/* Alert Bar */
+.alert-bar {
+    position: fixed; top: calc(var(--header-height) + var(--safe-top)); left: 0; width: 100%;
+    background: linear-gradient(90deg, var(--ninblu-purple), #4a1955);
+    padding: 10px 20px; display: flex; align-items: center; gap: 10px; z-index: 99;
+    font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.close-alert { background: none; border: none; color: white; margin-left: auto; cursor: pointer; }
+
+/* Dashboard */
+.kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+/* Proyectos */
+.cards-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+.project-card .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 5px currentColor; }
+.proj-meta { display: flex; gap: 15px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 15px; }
+.meta-item { display: flex; align-items: center; gap: 5px; }
+.proj-description {
+    overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+}
+
+/* Calendario */
+.calendar-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.cal-nav { display: flex; align-items: center; }
+.cal-nav button { background: none; border: none; color: white; font-size: 1.2rem; cursor:pointer;}
+#today-btn { font-weight: 700; font-size: 0.75rem !important; letter-spacing: 1px; }
+
+.calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 0.8rem; color: #888; margin-bottom: 5px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.day-cell {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; background: rgba(255,255,255,0.02);
+    font-size: 0.9rem; position: relative; cursor: pointer;
+}
+.day-cell.today { border: 1px solid var(--ninblu-purple); background: rgba(117, 44, 134, 0.2); }
+.day-cell.has-event::after {
+    content: ''; position: absolute; bottom: 4px;
+    width: 4px; height: 4px; background: var(--ninblu-pink); border-radius: 50%;
+}
+
+/* Noticias */
+.news-item { padding: 15px; /* Sin borde de color a la izquierda */ }
+.news-date { font-size: 0.7rem; color: var(--ninblu-yellow); display: block; text-transform: uppercase; }
+
+/* Perfil */
+.profile-header-card { text-align: center; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
+.profile-avatar-large {
+    width: 80px; height: 80px; background: var(--ninblu-purple);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; border: 2px solid var(--ninblu-pink);
+    box-shadow: 0 0 20px rgba(117, 44, 134, 0.5); margin-bottom: 15px;
+}
+.status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.status-btn {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    color: #888; padding: 12px; border-radius: 10px;
+    display: flex; align-items: center; gap: 8px; cursor: pointer;
+    font-size: 0.85rem;
+}
+.status-btn.active { background: rgba(255,255,255,0.1); border-color: white; color: white; }
+
+/* =========================================
+   6. BOTTOM NAVIGATION
+   ========================================= */
+.bottom-nav {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    height: calc(var(--nav-height) + var(--safe-bottom));
+    background: rgba(5, 2, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    display: flex; justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 10px;
+    z-index: 100;
+}
+
+.nav-item {
+    background: none; border: none;
+    color: #666;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    width: 20%; cursor: pointer; transition: 0.3s;
+}
+
+.nav-item i { font-size: 1.4rem; transition: 0.3s; }
+.nav-item span { font-size: 0.65rem; font-weight: 500; }
+
+.nav-item.active { color: var(--ninblu-pink); }
+.nav-item.active i { transform: translateY(-3px); filter: drop-shadow(0 0 8px var(--ninblu-pink)); }
+
+/* =========================================
+   7. MODALES & LOGIN
+   ========================================= */
+.modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex; align-items: flex-end;
+    opacity: 1; transition: opacity 0.3s;
+}
+.modal-overlay.hidden { display: none; opacity: 0; pointer-events: none; }
+
+.modal-card {
+    width: 100%; background: #120c1a;
+    border-radius: 20px 20px 0 0;
+    border-top: 1px solid var(--ninblu-purple);
+    padding: 25px;
+    max-height: 85vh; overflow-y: auto;
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.close-modal, .close-modal-notice { background:none; border:none; color:white; font-size:1.2rem; cursor:pointer;}
+
+/* Login Screen */
+.login-overlay {
+    position: fixed; inset: 0; z-index: 3000;
+    background: var(--bg-void);
+    display: flex; justify-content: center; align-items: center;
+}
+.login-card { width: 90%; max-width: 380px; text-align: center; }
+.ninblu-logo-large svg { width: 80px; margin-bottom: 20px; animation: breathe 4s infinite ease-in-out; }
+
+/* Utilidades */
+.hidden { display: none !important; }
+.user-tag { background: var(--ninblu-purple); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 5px; margin: 2px; }
+
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Ninblu Connect</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inder&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-background"></div>
+
+    <div id="login-screen" class="login-overlay hidden">
+        <div class="login-card glass-card">
+            <div class="ninblu-logo-large">
+                <svg viewBox="0 0 425 487" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M224.04,0c16.95,21.59,37.54,38.97,48.79,64.64,38.05,86.83-28.37,164.27-32.05,250.62l-2.48,2.6-4.69-.76c-3.48-39.33,12.1-76.74,22.1-113.89,11.94-44.36,19.26-75.66,5.99-121.43-7.61-26.24-23.01-44.24-40.16-64.77-13.73,19.14-35.42,35.5-44.2,57.72-21.32,53.93,4.37,122.78,12.58,177.93,4.45,29.94,7.11,63.61,6.2,93.87-.52,17.18-1.63,60.97-8.15,74.84-1.47,3.13-10.87,15.63-10.73,17.15,10.74,8.75,22.13,17.02,31.34,27.46,2.3,2.61,3.51,6.91,6.84,7.94,1.31-.23,14.03-16.48,16.01-19.03,3.48-4.49,12.46-19.03,15.5-21.47,4.49-3.6,8.91-.84,6.53,4.54-13.46,16.33-24.32,35.09-40.4,49.04h-3c-12.4-16.3-32.56-22.82-47.84-35.69,3.43-9.42,11.83-17.47,16.07-26.63,6.16-13.3,8.67-41.95,9.8-57.19,2.98-40.49.84-78.98-8.47-118.5-14.3-60.72-55.35-133.36-14.71-191.71,15.3-21.97,40.46-35.77,56.14-57.28h3Z" fill="#752c86"/>
+                    <path d="M.36,233c2.92-28.85,27.71-59.74,57.54-62.88,65.6-6.9,105.63,65.52,115.92,120.67,5.47,29.31,8.67,78.37-8.28,104.12-5.58,8.48-18.2,16.47-28.36,11.57l17.98-10.97c28.91-32.45,12.92-95.68.5-133.52-13.51-41.13-58.96-92.48-106.4-68.53-43.62,22.02-37.57,77.32.73,102.35,3.88,2.54,25.29,13.91,28.31,11.77,4.19-8.03,3.87-20.68,11.45-26.58,5.8-4.52,12.94-4.04,19.86-2.9,6.42,1.06,12.44,3.94,18.57,5.91l-20.03,2.42c-15.27,3.48-19.73,33.6-20.9,46.58-27.72-4.85-58.91-14.77-74.32-40.09-6.41-10.54-11.59-27.63-12.56-39.92-.43-5.36-.53-14.72,0-20Z" fill="#752c86"/>
+                    <path d="M424.75,231c.18,4.06.45,10.12,0,14-5.03,43.41-29.47,78.64-73.08,89.32-1.5.37-3.43,1.31-4.88.27-3.14-11.11-3.45-31.7-11.47-40.53-5.18-5.7-13.61-1.6-19.92-2.04-1.5-.1-2.9.75-2.48-1.5,8.08-5.14,25.46-18.95,32.95-7.02,3.97,6.33,6.39,37.37,7.99,38.51,35.28-12.07,59.04-53.77,53.79-90.38-5.62-39.25-44-58.9-78.69-38.04-36.21,21.77-48.56,67.74-57.51,106.41-7.01,30.29-13.06,69.87,6.61,96.41l18.86,12.6c-31.45,6.48-39.71-32.96-40.98-56.44-3.98-73.16,31.21-187.3,122.41-180.59,32.85,2.42,45.11,29.95,46.39,59.04Z" fill="#752c86"/>
+                </svg>
+            </div>
+            <h2>Bienvenido</h2>
+            <p style="color:#aaa; font-size:0.9rem; margin-bottom:20px;">Espacio de trabajo Ninblu</p>
+            <input type="text" id="login-name" class="glass-input" placeholder="Tu Nombre">
+            <button id="btn-login" class="btn-primary">Iniciar Sesión</button>
+        </div>
+    </div>
+
+    <header class="top-bar">
+        <div class="brand-container">
+            <div class="brand-icon">
+                <svg viewBox="0 0 425 487" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M224.04,0c16.95,21.59,37.54,38.97,48.79,64.64,38.05,86.83-28.37,164.27-32.05,250.62l-2.48,2.6-4.69-.76c-3.48-39.33,12.1-76.74,22.1-113.89,11.94-44.36,19.26-75.66,5.99-121.43-7.61-26.24-23.01-44.24-40.16-64.77-13.73,19.14-35.42,35.5-44.2,57.72-21.32,53.93,4.37,122.78,12.58,177.93,4.45,29.94,7.11,63.61,6.2,93.87-.52,17.18-1.63,60.97-8.15,74.84-1.47,3.13-10.87,15.63-10.73,17.15,10.74,8.75,22.13,17.02,31.34,27.46,2.3,2.61,3.51,6.91,6.84,7.94,1.31-.23,14.03-16.48,16.01-19.03,3.48-4.49,12.46-19.03,15.5-21.47,4.49-3.6,8.91-.84,6.53,4.54-13.46,16.33-24.32,35.09-40.4,49.04h-3c-12.4-16.3-32.56-22.82-47.84-35.69,3.43-9.42,11.83-17.47,16.07-26.63,6.16-13.3,8.67-41.95,9.8-57.19,2.98-40.49.84-78.98-8.47-118.5-14.3-60.72-55.35-133.36-14.71-191.71,15.3-21.97,40.46-35.77,56.14-57.28h3Z" fill="currentColor"/>
+                    <path d="M.36,233c2.92-28.85,27.71-59.74,57.54-62.88,65.6-6.9,105.63,65.52,115.92,120.67,5.47,29.31,8.67,78.37-8.28,104.12-5.58,8.48-18.2,16.47-28.36,11.57l17.98-10.97c28.91-32.45,12.92-95.68.5-133.52-13.51-41.13-58.96-92.48-106.4-68.53-43.62,22.02-37.57,77.32.73,102.35,3.88,2.54,25.29,13.91,28.31,11.77,4.19-8.03,3.87-20.68,11.45-26.58,5.8-4.52,12.94-4.04,19.86-2.9,6.42,1.06,12.44,3.94,18.57,5.91l-20.03,2.42c-15.27,3.48-19.73,33.6-20.9,46.58-27.72-4.85-58.91-14.77-74.32-40.09-6.41-10.54-11.59-27.63-12.56-39.92-.43-5.36-.53-14.72,0-20Z" fill="currentColor"/>
+                    <path d="M424.75,231c.18,4.06.45,10.12,0,14-5.03,43.41-29.47,78.64-73.08,89.32-1.5.37-3.43,1.31-4.88.27-3.14-11.11-3.45-31.7-11.47-40.53-5.18-5.7-13.61-1.6-19.92-2.04-1.5-.1-2.9.75-2.48-1.5,8.08-5.14,25.46-18.95,32.95-7.02,3.97,6.33,6.39,37.37,7.99,38.51,35.28-12.07,59.04-53.77,53.79-90.38-5.62-39.25-44-58.9-78.69-38.04-36.21,21.77-48.56,67.74-57.51,106.41-7.01,30.29-13.06,69.87,6.61,96.41l18.86,12.6c-31.45,6.48-39.71-32.96-40.98-56.44-3.98-73.16,31.21-187.3,122.41-180.59,32.85,2.42,45.11,29.95,46.39,59.04Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <img src="assets/ninblulogotipo.png" alt="Ninblu" class="brand-text-img">
+        </div>
+        
+        <div class="user-profile-trigger" id="header-avatar-btn">
+            <div class="status-indicator" id="header-status-dot"></div>
+            <div class="avatar-small">U</div>
+        </div>
+    </header>
+
+    <div id="global-alert-bar" class="alert-bar hidden">
+        <i class="ph-fill ph-megaphone-simple"></i>
+        <span id="alert-text">Mensaje del sistema...</span>
+        <button class="close-alert"><i class="ph ph-x"></i></button>
+    </div>
+
+    <main id="main-container">
+        
+        <section id="dashboard-section" class="active-section">
+            <h2 class="section-title">Resumen General</h2>
+            <div class="kpi-grid"></div>
+            
+            <div class="section-header">
+                <h3>Deadlines Urgentes</h3>
+            </div>
+            <div id="urgent-tasks" class="list-container"></div>
+        </section>
+
+        <section id="news-section" class="hidden-section">
+            <div class="section-header">
+                <h2>Tablón de Avisos</h2>
+                <button class="btn-icon-primary" id="btn-create-notice">
+                    <i class="ph ph-plus"></i>
+                </button>
+            </div>
+            <div id="news-feed" class="news-feed"></div>
+        </section>
+
+        <section id="projects-section" class="hidden-section">
+            <div class="section-header">
+                <h2>Mis Proyectos</h2>
+                <button class="btn-icon-primary" id="btn-new-project">
+                    <i class="ph ph-plus"></i>
+                </button>
+            </div>
+            <div id="projects-grid" class="cards-grid"></div>
+        </section>
+
+        <section id="calendar-section" class="hidden-section">
+            <div class="calendar-controls">
+                <h2 id="cal-month-name">Mes Año</h2>
+                <div class="cal-nav">
+                    <button id="today-btn" style="font-size:0.75rem; margin-right:10px; background:var(--ninblu-purple); padding:2px 8px; border-radius:4px;">HOY</button>
+                    <button id="prev-month"><i class="ph ph-caret-left"></i></button>
+                    <button id="next-month"><i class="ph ph-caret-right"></i></button>
+                </div>
+            </div>
+            <div class="calendar-weekdays">
+                <div>D</div><div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div>
+            </div>
+            <div id="calendar-grid" class="calendar-grid"></div>
+            <div class="section-header" style="margin-top: 20px;">
+                <h3>Eventos del Día</h3>
+            </div>
+            <div id="calendar-events-list" class="list-container"></div>
+        </section>
+
+        <section id="directory-section" class="hidden-section">
+            <div class="section-header">
+                <h2>Equipo</h2>
+            </div>
+            <div class="glass-input-container">
+                <input type="text" id="directory-search" class="glass-input" placeholder="Buscar compañero...">
+            </div>
+            <div id="directory-list" class="directory-list" style="margin-top:15px; display:flex; flex-direction:column; gap:10px;"></div>
+        </section>
+
+        <section id="profile-section" class="hidden-section">
+            <div class="profile-header-card glass-card">
+                <div class="profile-avatar-large">U</div>
+                <h2 id="profile-name-display">Usuario</h2>
+                <p id="profile-role-display" style="color:var(--ninblu-pink)">Rol</p>
+            </div>
+
+            <div class="section-header">
+                <h3>Mi Estado</h3>
+            </div>
+            <div class="status-grid">
+                <button class="status-btn active" data-status="online">
+                    <span class="dot online" style="background:#00ff88; width:8px; height:8px; border-radius:50%;"></span> En Línea
+                </button>
+                <button class="status-btn" data-status="busy">
+                    <span class="dot busy" style="background:#ff4444; width:8px; height:8px; border-radius:50%;"></span> Ocupado
+                </button>
+                <button class="status-btn" data-status="vacation">
+                    <span class="dot vacation" style="background:#feee8c; width:8px; height:8px; border-radius:50%;"></span> Vacaciones
+                </button>
+                <button class="status-btn" data-status="offline">
+                    <span class="dot offline" style="background:#555; width:8px; height:8px; border-radius:50%;"></span> Offline
+                </button>
+            </div>
+
+            <button id="btn-logout" class="btn-danger-outline">
+                <i class="ph ph-sign-out"></i> Cerrar Sesión
+            </button>
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-target="dashboard-section">
+            <i class="ph ph-house"></i>
+            <span>Inicio</span>
+        </button>
+        <button class="nav-item" data-target="news-section">
+            <i class="ph ph-newspaper"></i>
+            <span>Avisos</span>
+        </button>
+        <button class="nav-item" data-target="projects-section">
+            <i class="ph ph-rocket-launch"></i>
+            <span>Proyectos</span>
+        </button>
+        <button class="nav-item" data-target="calendar-section">
+            <i class="ph ph-calendar-blank"></i>
+            <span>Agenda</span>
+        </button>
+        <button class="nav-item" data-target="directory-section">
+            <i class="ph ph-users"></i>
+            <span>Equipo</span>
+        </button>
+    </nav>
+
+    <div id="project-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Nuevo Proyecto</h3>
+                <button class="close-modal" style="background:none; border:none; color:white; font-size:1.2rem;"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="proj-id">
+                
+                <label style="font-size:0.8rem; color:#aaa;">Nombre</label>
+                <input type="text" id="proj-name" class="glass-input">
+                
+                <label style="font-size:0.8rem; color:#aaa;">Descripción Breve</label>
+                <textarea id="proj-desc" class="glass-input" rows="2" placeholder="Objetivos..."></textarea>
+                
+                <label style="font-size:0.8rem; color:#aaa;">Link Reunión (Zoom/Meet)</label>
+                <input type="url" id="proj-link" class="glass-input" placeholder="https://zoom.us/...">
+
+                <label style="font-size:0.8rem; color:#aaa;">Estado</label>
+                <select id="proj-status" class="glass-input">
+                    <option value="active" style="background:#333;">En Curso</option>
+                    <option value="pending" style="background:#333;">Pendiente</option>
+                    <option value="completed" style="background:#333;">Finalizado</option>
+                </select>
+
+                <div style="margin-top:15px;">
+                    <label style="font-size:0.8rem; color:#aaa;">Deadlines</label>
+                    <div style="display:flex; gap:5px; margin-bottom:10px;">
+                        <input type="date" id="new-deadline-date" class="glass-input" style="width:40%; margin:0;">
+                        <input type="text" id="new-deadline-desc" class="glass-input" placeholder="Entrega..." style="margin:0;">
+                        <button id="btn-add-deadline" class="btn-icon-primary" style="width:40px; height:40px; border-radius:8px;"><i class="ph ph-plus"></i></button>
+                    </div>
+                    <ul id="proj-deadlines-list" style="list-style:none; padding:0; margin-bottom:15px;"></ul>
+                </div>
+
+                <div style="margin-top:15px;">
+                    <label style="font-size:0.8rem; color:#aaa;">Equipo</label>
+                    <div style="display:flex; gap:5px;">
+                        <select id="proj-user-select" class="glass-input" style="margin:0;"></select>
+                        <button id="btn-add-user" class="btn-primary" style="width:auto; padding:0 15px;">Add</button>
+                    </div>
+                    <div id="proj-team-tags" style="display:flex; flex-wrap:wrap; margin-top:10px;"></div>
+                </div>
+
+                <div class="modal-actions" style="display:flex; gap:10px; margin-top:20px;">
+                    <button id="btn-delete-proj" class="btn-danger-outline" style="margin:0; border-color:#ff4444; color:#ff4444;">Eliminar</button>
+                    <button id="btn-save-proj" class="btn-primary" style="margin:0;">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notice-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Publicar Aviso</h3>
+                <button class="close-modal-notice" style="background:none; border:none; color:white; font-size:1.2rem;"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <label style="font-size:0.8rem; color:#aaa;">Dirigido a:</label>
+                <select id="notice-target" class="glass-input">
+                    <option value="global" style="background:#333;">📢 Todo el Equipo (General)</option>
+                    </select>
+                
+                <textarea id="notice-text" class="glass-input" rows="3" placeholder="Mensaje..."></textarea>
+                <button id="btn-publish-notice" class="btn-primary">Publicar Ahora</button>
+            </div>
+        </div>
+    </div>
+
+    <template id="tpl-project-card">
+        <div class="glass-card project-card">
+            <div class="card-header">
+                <h4 class="proj-title" style="font-weight:600;">Nombre</h4>
+                <span class="status-dot"></span>
+            </div>
+            <p class="proj-description" style="font-size:0.85rem; color:#ccc; margin-bottom:10px;">Desc...</p>
+            <div class="proj-meta">
+                <div class="meta-item"><i class="ph ph-users"></i> <span class="team-count">0</span></div>
+                <div class="meta-item"><i class="ph ph-flag"></i> <span class="deadline-count">0</span></div>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn-edit-proj" style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#ccc; padding:8px; border-radius:8px; cursor:pointer;">
+                    <i class="ph ph-pencil-simple"></i>
+                </button>
+                <a href="#" target="_blank" class="btn-link-proj" style="flex:1; text-align:center; background:rgba(117, 44, 134, 0.3); border:1px solid var(--ninblu-purple); color:white; padding:8px; border-radius:8px; text-decoration:none; display:none;">
+                    <i class="ph ph-video-camera"></i> Link
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
